@@ -1,0 +1,7 @@
+---
+name: bitbucket
+dependencies:
+- git
+- java
+files:
+- bitbucket/atlassian-bitbucket-5.0.2.tar.gz

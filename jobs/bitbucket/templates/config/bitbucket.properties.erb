@@ -1,0 +1,22 @@
+hazelcast.network.multicast=true
+hazelcast.group.name=<%= p("bitbucket.hazelcast_group_name") %>
+hazelcast.group.password=<%= p("bitbucket.hazelcast_group_password") %>
+plugin.search.elasticsearch.baseurl=<%= p("bitbucket.plugin_search_elasticsearch_baseurl") %>
+plugin.bitbucket-git.path.executable=$GIT_HOME/bin
+server.session.cookie.name=<%= p("bitbucket.server_session_cookie_name") %>
+server.port=<%= p("bitbucket.port") %>
+server.secure=true
+server.scheme=https
+server.proxy-port=443
+server.proxy-name=<%= p("bitbucket.server_proxy_name") %>
+jdbc.driver=org.postgresql.Driver
+jdbc.url=<%= p("bitbucket.jdbc_url") %>
+jdbc.user=<%= p("bitbucket.jdbc_user") %>
+jdbc.password=<%= p("bitbucket.jdbc_password") %>
+setup.license=<%= p("bitbucket.setup_license") %>
+setup.displayName=<%= p("bitbucket.setup_displayName") %>
+setup.baseUrl=<%= p("bitbucket.setup_baseUrl") %>
+setup.sysadmin.username=<%= p("bitbucket.setup_sysadmin_username") %>
+setup.sysadmin.password=<%= p("bitbucket.setup_sysadmin_password") %>
+setup.sysadmin.displayName=<%= p("bitbucket.setup_sysadmin_displayName") %>
+setup.sysadmin.emailAddress=<%= p("bitbucket.setup_sysadmin_emailAddress") %>

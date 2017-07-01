@@ -1,0 +1,5 @@
+check process bitbucket
+  with pidfile /var/vcap/store/bitbucket/home/log/bitbucket.pid
+  start program "/var/vcap/jobs/bitbucket/bin/monit_debugger bitbucket_ctl '/var/vcap/jobs/bitbucket/bin/ctl start'"
+  stop program "/var/vcap/jobs/bitbucket/bin/monit_debugger bitbucket_ctl '/var/vcap/jobs/bitbucket/bin/ctl stop'"
+  group vcap

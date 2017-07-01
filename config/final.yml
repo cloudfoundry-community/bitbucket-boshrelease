@@ -1,0 +1,7 @@
+--- 
+blobstore:
+  provider: local
+  options:
+    blobstore_path: /home/camille/Documents/bosh-lite/bitbucket02/blobs
+final_name: bitbucket
+

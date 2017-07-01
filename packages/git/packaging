@@ -1,0 +1,18 @@
+
+set -e # exit immediately if a simple command exits with a non-zero status
+set -u # report the usage of uninitialized variables
+
+# 123Detect # of CPUs so make jobs can be parallelized
+CPUS=$(grep -c ^processor /proc/cpuinfo)
+
+export HOME=/var/vcap
+
+if [[ -n "$(command -v yum)" ]]; then
+  echo "on CentOS; installing perl-devel base package"
+  yum install perl-devel -y 
+fi
+
+tar xzf git/git-2.13.1.tar.gz
+(cd git-2.13.1
+ ./configure --prefix=${BOSH_INSTALL_TARGET} 
+make -j $CPUS install)

@@ -1,0 +1,7 @@
+set -e
+#unzip
+tar xz -C bitbucket/ -f bitbucket/atlassian-bitbucket-5.0.2.tar.gz
+
+mkdir -p ${BOSH_INSTALL_TARGET}/installdir
+cp -r bitbucket/atlassian-bitbucket-5.0.2/* ${BOSH_INSTALL_TARGET}/installdir
+
