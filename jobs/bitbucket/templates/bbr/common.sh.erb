@@ -20,7 +20,7 @@ fi
 
 if [ -f "${BACKUP_VARS_FILE}" ]; then
     source "${BACKUP_VARS_FILE}"
-    debug "Using vars file: '${BACKUP_VARS_FILE}'"
+    #debug "Using vars file: '${BACKUP_VARS_FILE}'"
 else
     error "'${BACKUP_VARS_FILE}' not found"
     bail "You should create it using '${SCRIPT_DIR}/bitbucket.diy-backup.vars.sh.example' as a template"
@@ -60,8 +60,8 @@ function lock_bitbucket {
     fi
     echo ${BITBUCKET_LOCK_TOKEN} > ${SCRIPT_DIR}/token
     chmod 777 ${SCRIPT_DIR}/token
-    info "Bitbucket has been locked for maintenance.  It can be unlocked with:"
-    info "    curl -u ... -X DELETE -H 'Content-type:application/json' '${BITBUCKET_URL}/mvc/maintenance/lock?token=${BITBUCKET_LOCK_TOKEN}'"
+    #info "Bitbucket has been locked for maintenance.  It can be unlocked with:"
+    #info "    curl -u ... -X DELETE -H 'Content-type:application/json' '${BITBUCKET_URL}/mvc/maintenance/lock?token=${BITBUCKET_LOCK_TOKEN}'"
 }
 
 # Instruct Bitbucket to begin a backup
@@ -86,9 +86,9 @@ function backup_start {
         bail "Unable to enter backup mode. Could not find 'cancelToken' in response '${backup_response}'"
     fi
 
-    info "Bitbucket server is now preparing for backup. If the backup task is cancelled, Bitbucket Server should be notified that backup was terminated by executing the following command:"
-    info "    curl -u ... -X POST -H 'Content-type:application/json' '${BITBUCKET_URL}/mvc/maintenance?token=${BITBUCKET_BACKUP_TOKEN}'"
-    info "This will also terminate the backup process in Bitbucket Server. Note that this will not unlock Bitbucket Server from maintenance mode."
+    #info "Bitbucket server is now preparing for backup. If the backup task is cancelled, Bitbucket Server should be notified that backup was terminated by executing the following command:"
+    #info "    curl -u ... -X POST -H 'Content-type:application/json' '${BITBUCKET_URL}/mvc/maintenance?token=${BITBUCKET_BACKUP_TOKEN}'"
+    #info "This will also terminate the backup process in Bitbucket Server. Note that this will not unlock Bitbucket Server from maintenance mode."
 }
 
 # Wait for database and SCM to drain to ensure a consistent backup
@@ -100,7 +100,7 @@ function backup_wait {
     local db_state="AVAILABLE"
     local scm_state="AVAILABLE"
 
-    info "Waiting for Bitbucket to become ready to be backed up"
+    #info "Waiting for Bitbucket to become ready to be backed up"
 
     while [ "${db_state}_${scm_state}" != "DRAINED_DRAINED" ]; do
         # The following curl command is not executed with run to suppress the polling spam of messages
@@ -301,7 +301,7 @@ function remove_cleanup_routine {
 
 # Execute the callbacks previously registered via "add_cleanup_routine"
 function run_cleanup {
-    debug "Running cleanup jobs..."
+    #debug "Running cleanup jobs..."
     local var="cleanup_queue_${BASH_SUBSHELL}"
     for cleanup in ${!var}; do
         ${cleanup}

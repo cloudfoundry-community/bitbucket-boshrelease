@@ -30,7 +30,7 @@ backup_elasticsearch &
 
 backup_wait
 
-info "Backing up the database and filesystem in parallel"
+#info "Backing up the database and filesystem in parallel"
 (backup_db && update_backup_progress 50) &
 (backup_home && update_backup_progress 50) &
 
@@ -48,7 +48,7 @@ cleanup_home_backups
 cleanup_elasticsearch_backups
 
 if [ -n "${BACKUP_ARCHIVE_TYPE}" ]; then
-    info "Archiving backups and cleaning up old archives"
+    #info "Archiving backups and cleaning up old archives"
     archive_backup
     cleanup_old_archives
 fi
