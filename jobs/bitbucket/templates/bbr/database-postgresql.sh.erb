@@ -21,7 +21,9 @@ function prepare_backup_db {
 }
 
 function backup_db {
-    rm -r "${BITBUCKET_BACKUP_DB}"
+    if [ -d "${BITBUCKET_BACKUP_DB}" ]; then
+      rm -rf "${BITBUCKET_BACKUP_DB}"
+    fi
     run pg_dump -U "${POSTGRES_USERNAME}" -h "${POSTGRES_HOST}" --port=${POSTGRES_PORT} ${PG_PARALLEL} -Fd \
         "${BITBUCKET_DB}" ${PG_SNAPSHOT_OPT} -f "${BITBUCKET_BACKUP_DB}"
 }
