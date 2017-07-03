@@ -24,10 +24,10 @@ check_command "jq"
 
 ##########################################################
 
-info "Preparing for backup"
+#info "Preparing for backup"
 prepare_backup_db
 prepare_backup_home
 
 # If necessary, lock Bitbucket, start an external backup and wait for instance readiness
-info "lock bitbucket for maintenance"
+#info "lock bitbucket for maintenance"
 lock_bitbucket

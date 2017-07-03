@@ -40,16 +40,18 @@ wait $(jobs -p)
 # If necessary, report 100% progress back to the application, and unlock Bitbucket
 update_backup_progress 100
 
-success "Successfully completed the backup of your ${PRODUCT} instance"
-
-# Cleanup backups retaining the latest $KEEP_BACKUPS
-cleanup_db_backups
-cleanup_home_backups
-cleanup_elasticsearch_backups
-
 if [ -n "${BACKUP_ARCHIVE_TYPE}" ]; then
     #info "Archiving backups and cleaning up old archives"
     archive_backup
-    cleanup_old_archives
+    #cleanup_old_archives
 fi
+
+success "Successfully completed the backup of your ${PRODUCT} instance"
+
+# Cleanup backups retaining the latest $KEEP_BACKUPS
+#cleanup_db_backups
+#cleanup_home_backups
+#cleanup_elasticsearch_backups
+
+
 
