@@ -29,9 +29,6 @@ templates:
 
 
 properties:
-  BBR_ARTIFACT_DIRECTORY:
-   description: "Directory where backup file will be"
-   default: /var/vcap/store/archive
   bitbucket:
    port:
     description: "Port on which server is listening"

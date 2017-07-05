@@ -42,8 +42,10 @@ update_backup_progress 100
 
 if [ -n "${BACKUP_ARCHIVE_TYPE}" ]; then
     #info "Archiving backups and cleaning up old archives"
-    archive_backup
+    #archive_backup
     #cleanup_old_archives
+    echo $BBR_ARTIFACT_DIRECTORY
+    cp ${BITBUCKET_BACKUP_ARCHIVE_ROOT}/* $BBR_ARTIFACT_DIRECTORY/
 fi
 
 success "Successfully completed the backup of your ${PRODUCT} instance"
