@@ -39,21 +39,13 @@ wait $(jobs -p)
 
 # If necessary, report 100% progress back to the application, and unlock Bitbucket
 update_backup_progress 100
+echo $BBR_ARTIFACT_DIRECTORY
+cp -rf ${BITBUCKET_BACKUP_ARCHIVE_ROOT}/* $BBR_ARTIFACT_DIRECTORY/
 
-if [ -n "${BACKUP_ARCHIVE_TYPE}" ]; then
-    #info "Archiving backups and cleaning up old archives"
-    #archive_backup
-    #cleanup_old_archives
-    echo $BBR_ARTIFACT_DIRECTORY
-    cp ${BITBUCKET_BACKUP_ARCHIVE_ROOT}/* $BBR_ARTIFACT_DIRECTORY/
-fi
 
 success "Successfully completed the backup of your ${PRODUCT} instance"
 
-# Cleanup backups retaining the latest $KEEP_BACKUPS
-#cleanup_db_backups
-#cleanup_home_backups
-#cleanup_elasticsearch_backups
+
 
 
 
