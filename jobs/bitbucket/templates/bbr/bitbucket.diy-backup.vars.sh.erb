@@ -207,7 +207,7 @@ case ${BACKUP_ARCHIVE_TYPE} in
         ;;
     *)
         # The path to working folder for the backup
-        BITBUCKET_BACKUP_ROOT=<%= p('BBR_ARTIFACT_DIRECTORY')%>
+        BITBUCKET_BACKUP_ROOT=/var/vcap/store/archive
         BITBUCKET_BACKUP_DB=${BITBUCKET_BACKUP_ROOT}/bitbucket-db/
         BITBUCKET_BACKUP_HOME=${BITBUCKET_BACKUP_ROOT}/bitbucket-home/
 
