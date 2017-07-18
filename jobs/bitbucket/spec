@@ -33,6 +33,7 @@ properties:
    port:
     description: "Port on which server is listening"
    hazelcast_group_name:
+    default: "your-bitbucket-cluster-name"
     description: "your-bitbucket-cluster-name"
    hazelcast_group_password:
     description: "your-bitbucket-cluster password"
@@ -68,9 +69,9 @@ properties:
     description: "active availability by autorize mount nfs and bitbucket cluster property"
     default: false
    nfs_share_folder:
-     description: "directory to mount the shared folder"
-     default: ""
+    description: "directory to mount the shared folder"
+    default: ""
    nfs_ip_server: 
-     description: "directory to mount the shared folder"
-     default: 0.0.0.0
+    description: "directory to mount the shared folder"
+    default: "0.0.0.0"
 
