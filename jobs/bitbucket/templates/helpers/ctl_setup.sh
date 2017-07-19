@@ -10,7 +10,7 @@ export JOB_DIR=/var/vcap/jobs/$JOB_NAME
 chmod 755 $JOB_DIR # to access file via symlink
 source $JOB_DIR/data/properties.sh
 source $JOB_DIR/helpers/ctl_utils.sh
-source $JOB_DIR/helpers/ctl_mountnfs.sh
+#source $JOB_DIR/helpers/ctl_mountnfs.sh
 redirect_output ${output_label}
 export HOME=${HOME:-/home/vcap}
 
@@ -78,7 +78,7 @@ fi
 
 #Create bitbucket Home Direrctory
 BITBUCKET_HOME=/var/vcap/store/bitbucket/home
-MOUNTPOINT=$BITBUCKET_HOME/shared
+#MOUNTPOINT=$BITBUCKET_HOME/shared
 if [ -d "$BITBUCKET_HOME" ]; then
     echo "directory $BITBUCKET_HOME already exist"
 else
@@ -122,12 +122,12 @@ run_with_home() {
 #
 do_start()
 {
-    echo "HA="
-    echo <%= p("bitbucket.enable_ha") %> 
-    if [ <%= p("bitbucket.enable_ha") %> = true ]; then
-      mount_nfs
-      sleep 5
-    fi
+    #echo "HA="
+    #echo <%= p("bitbucket.enable_ha") %> 
+    #if [ <%= p("bitbucket.enable_ha") %> = true ]; then
+    #  mount_nfs
+    #  sleep 5
+    #fi
     run_with_home start-bitbucket.sh
 }
 
@@ -143,7 +143,7 @@ do_stop()
     else
       log_failure_msg "$NAME is not running."
     fi
-    umount_nfs
+    #umount_nfs
 }
 
 echo '$PATH' $PATH

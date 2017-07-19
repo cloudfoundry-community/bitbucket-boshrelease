@@ -38,7 +38,7 @@ properties:
    hazelcast_group_password:
     description: "your-bitbucket-cluster password"
    plugin_search_elasticsearch_baseurl: 
-    description: "http://localhost:9200/"
+    description: "http://localhost:7992"
    server_session_cookie_name: 
     description: "JSESSIONID"
    server_proxy_name:
@@ -65,13 +65,4 @@ properties:
     description: "emailAddress"
    java_version:
     description: "jdk1.8.0_131"
-   enable_ha: 
-    description: "active availability by autorize mount nfs and bitbucket cluster property"
-    default: false
-   nfs_share_folder:
-    description: "directory to mount the shared folder"
-    default: ""
-   nfs_ip_server: 
-    description: "directory to mount the shared folder"
-    default: "0.0.0.0"
 
