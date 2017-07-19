@@ -122,12 +122,6 @@ run_with_home() {
 #
 do_start()
 {
-    #echo "HA="
-    #echo <%= p("bitbucket.enable_ha") %> 
-    #if [ <%= p("bitbucket.enable_ha") %> = true ]; then
-    #  mount_nfs
-    #  sleep 5
-    #fi
     run_with_home start-bitbucket.sh
 }
 
