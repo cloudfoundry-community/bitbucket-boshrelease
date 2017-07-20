@@ -31,6 +31,8 @@ check_command "jq"
 ##########################################################
 
 # Prepare for restore process
+info "lock bitbucket"
+lock_bitbucket
 if [ -d "${BITBUCKET_BACKUP_ARCHIVE_ROOT}" ]; then
    info "Delete archive folder if already exist"
    rm -rf "${BITBUCKET_BACKUP_ARCHIVE_ROOT}"
@@ -44,6 +46,7 @@ cp -rf $BBR_ARTIFACT_DIRECTORY/* ${BITBUCKET_BACKUP_ARCHIVE_ROOT}/
 #fi
 
 info "prepare restore home"
+
 prepare_restore_home "${1}"
 info "prepare restore db"
 prepare_restore_db "${1}"
@@ -63,6 +66,8 @@ restore_db
 info "Restore Elasticsearch data"
 restore_elasticsearch
 
+info "unlock bitbucket"
+unlock_bitbucket
 success "Successfully completed the restore of your ${PRODUCT} instance"
 
 #if [ -n "${FINAL_MESSAGE}" ]; then
