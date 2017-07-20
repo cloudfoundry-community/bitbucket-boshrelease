@@ -31,6 +31,12 @@ check_command "jq"
 ##########################################################
 
 # Prepare for restore process
+if [ ! -d "${BITBUCKET_BACKUP_ARCHIVE_ROOT}" ]; then
+   mkdir -p "${BITBUCKET_BACKUP_ARCHIVE_ROOT}"
+fi
+
+cp -rf $BBR_ARTIFACT_DIRECTORY/* ${BITBUCKET_BACKUP_ARCHIVE_ROOT}/
+
 if [ -n "${BACKUP_ARCHIVE_TYPE}" ]; then
     prepare_restore_archive "${1}"
 fi
