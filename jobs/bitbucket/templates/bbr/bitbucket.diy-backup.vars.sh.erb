@@ -210,6 +210,8 @@ case ${BACKUP_ARCHIVE_TYPE} in
         BITBUCKET_BACKUP_ROOT=/var/vcap/store/archive
         BITBUCKET_BACKUP_DB=${BITBUCKET_BACKUP_ROOT}/bitbucket-db/
         BITBUCKET_BACKUP_HOME=${BITBUCKET_BACKUP_ROOT}/bitbucket-home/
+        BITBUCKET_RESTORE_DB=${BITBUCKET_BACKUP_ROOT}/bitbucket-db/
+        BITBUCKET_RESTORE_HOME=${BITBUCKET_BACKUP_ROOT}/bitbucket-home/
 
         # The path to where the backup archives are stored
         BITBUCKET_BACKUP_ARCHIVE_ROOT=${BITBUCKET_BACKUP_ROOT}
