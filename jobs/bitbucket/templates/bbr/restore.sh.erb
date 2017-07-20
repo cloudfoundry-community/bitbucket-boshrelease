@@ -31,10 +31,10 @@ check_command "jq"
 ##########################################################
 
 # Prepare for restore process
-if [ ! -d "${BITBUCKET_BACKUP_ARCHIVE_ROOT}" ]; then
-   mkdir -p "${BITBUCKET_BACKUP_ARCHIVE_ROOT}"
+if [ -d "${BITBUCKET_BACKUP_ARCHIVE_ROOT}" ]; then
+   rm -rf "${BITBUCKET_BACKUP_ARCHIVE_ROOT}"
 fi
-
+mkdir -p "${BITBUCKET_BACKUP_ARCHIVE_ROOT}"
 cp -rf $BBR_ARTIFACT_DIRECTORY/* ${BITBUCKET_BACKUP_ARCHIVE_ROOT}/
 
 if [ -n "${BACKUP_ARCHIVE_TYPE}" ]; then
