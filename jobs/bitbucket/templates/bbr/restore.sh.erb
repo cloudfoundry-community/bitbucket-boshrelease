@@ -44,7 +44,7 @@ cp -rf $BBR_ARTIFACT_DIRECTORY/* ${BITBUCKET_BACKUP_ARCHIVE_ROOT}/
 #if [ -n "${BACKUP_ARCHIVE_TYPE}" ]; then
 #    prepare_restore_archive "${1}"
 #fi
-
+info " le host est ${POSTGRES_PORT}"
 info "prepare restore home"
 if [ ${POSTGRES_PORT} = "localhost" ]; then
  $pathtopostgres/postgres_ctl start
