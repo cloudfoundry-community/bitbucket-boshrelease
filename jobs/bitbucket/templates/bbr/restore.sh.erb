@@ -19,6 +19,7 @@ source_archive_strategy
 source_database_strategy
 source_home_strategy
 source_elasticsearch_strategy
+pathtopostgres=/var/vcap/jobs/postgres/bin/postgres_ctl
 
 # Ensure we know which user:group things should be owned as
 if [ -z "${BITBUCKET_UID}" -o -z "${BITBUCKET_GID}" ]; then
@@ -45,6 +46,9 @@ cp -rf $BBR_ARTIFACT_DIRECTORY/* ${BITBUCKET_BACKUP_ARCHIVE_ROOT}/
 #fi
 
 info "prepare restore home"
+if [ ${POSTGRES_PORT} = "localhost" ]; then
+ $pathtopostgres/postgres_ctl start
+fi
 
 prepare_restore_home "${1}"
 info "prepare restore db"
@@ -65,7 +69,9 @@ restore_db
 info "Restore Elasticsearch data"
 restore_elasticsearch
 
-info "unlock bitbucket"
+if [ ${POSTGRES_PORT} = "localhost" ]; then
+ $pathtopostgres/postgres_ctl stop
+fi
 success "Successfully completed the restore of your ${PRODUCT} instance"
 
 #if [ -n "${FINAL_MESSAGE}" ]; then
