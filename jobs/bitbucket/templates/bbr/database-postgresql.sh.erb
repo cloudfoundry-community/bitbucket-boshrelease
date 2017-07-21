@@ -33,8 +33,8 @@ function prepare_restore_db {
     check_config_var "POSTGRES_HOST"
     check_config_var "POSTGRES_PORT"
     check_var "BITBUCKET_RESTORE_DB"
-    info "dropdb ${BITBUCKET_DB} -U vcap -h ${POSTGRES_HOST} --port=${POSTGRES_PORT}"
-    if run dropdb ${BITBUCKET_DB} -U vcap -h ${POSTGRES_HOST} --port=${POSTGRES_PORT} 2>/dev/null; then
+    info "dropdb ${BITBUCKET_DB} -U ${POSTGRES_USERNAME} -h ${POSTGRES_HOST} --port=${POSTGRES_PORT}"
+    if run dropdb ${BITBUCKET_DB} -U "${POSTGRES_USERNAME}" -h ${POSTGRES_HOST} --port=${POSTGRES_PORT} 2>/dev/null; then
         info "Cannot restore over existing database '${BITBUCKET_DB}' so we'll drop existing db"
     fi
     
