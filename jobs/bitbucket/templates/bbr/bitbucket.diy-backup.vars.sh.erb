@@ -167,8 +167,8 @@ case ${BACKUP_DATABASE_TYPE} in
         # the standby system with the same level of access.
         BITBUCKET_DB=bitbucket
         POSTGRES_HOST=localhost
-        POSTGRES_USERNAME=vcap
-        #export PGPASSWORD=password
+        POSTGRES_USERNAME=bitadmin
+        export PGPASSWORD=password
         POSTGRES_PORT=5524
 
         # ==== DISASTER RECOVERY VARS ====
