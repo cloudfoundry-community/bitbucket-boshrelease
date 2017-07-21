@@ -44,9 +44,9 @@ cp -rf $BBR_ARTIFACT_DIRECTORY/* ${BITBUCKET_BACKUP_ARCHIVE_ROOT}/
 #if [ -n "${BACKUP_ARCHIVE_TYPE}" ]; then
 #    prepare_restore_archive "${1}"
 #fi
-info " le host est ${POSTGRES_PORT}"
+info " le host est ${POSTGRES_HOST}"
 info "prepare restore home"
-if [ ${POSTGRES_PORT} = "localhost" ]; then
+if [ ${POSTGRES_HOST} = "localhost" ]; then
  $pathtopostgres/postgres_ctl start
 fi
 
@@ -69,7 +69,7 @@ restore_db
 info "Restore Elasticsearch data"
 restore_elasticsearch
 
-if [ ${POSTGRES_PORT} = "localhost" ]; then
+if [ ${POSTGRES_HOST} = "localhost" ]; then
  $pathtopostgres/postgres_ctl stop
 fi
 success "Successfully completed the restore of your ${PRODUCT} instance"
