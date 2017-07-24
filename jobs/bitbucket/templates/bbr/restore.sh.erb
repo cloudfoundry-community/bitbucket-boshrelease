@@ -53,7 +53,6 @@ do_stop()
     echo ${PIDFILE}
     if [ -e ${PIDFILE} ]; then
       run_with_home stop-bitbucket.sh 
-      kill_and_wait ${PIDFILE}
     else
       log_failure_msg "$NAME is not running."
     fi
