@@ -30,6 +30,40 @@ check_command "jq"
 
 ##########################################################
 
+RUNUSER=vcap 
+BITBUCKET_INSTALLDIR=/var/vcap/packages/bitbucket/installdir
+PIDFILE=$BITBUCKET_HOME/log/bitbucket.pid
+run_with_home() {
+        su - "$RUNUSER" -c "${BITBUCKET_INSTALLDIR}/bin/$1"
+}
+
+#
+# Function that starts the daemon/service
+#
+do_start()
+{
+    run_with_home start-bitbucket.sh
+}
+
+#
+# Function that stops the daemon/service
+#
+do_stop()
+{
+    echo ${PIDFILE}
+    if [ -e ${PIDFILE} ]; then
+      run_with_home stop-bitbucket.sh 
+      kill_and_wait ${PIDFILE}
+    else
+      log_failure_msg "$NAME is not running."
+    fi
+    #umount_nfs
+}
+
+
+
+##########################################################
+
 # Prepare for restore process
 if [ -d "${BITBUCKET_BACKUP_ARCHIVE_ROOT}" ]; then
    info "Delete archive folder if already exist"
@@ -40,7 +74,7 @@ mkdir -p "${BITBUCKET_BACKUP_ARCHIVE_ROOT}"
 cp -rf $BBR_ARTIFACT_DIRECTORY/* ${BITBUCKET_BACKUP_ARCHIVE_ROOT}/
 
 info "Stop bitbucket before restore"
-/var/vcap/jobs/bitbucket/bin/ctl stop
+do_stop
 info "prepare restore home"
 prepare_restore_home "${1}"
 info "prepare restore db"
@@ -59,8 +93,6 @@ info "Restore Elasticsearch data"
 restore_elasticsearch
 
 success "Successfully completed the restore of your ${PRODUCT} instance"
-info "Start bitbucket after restore"
-/var/vcap/jobs/bitbucket/bin/ctl start
 #if [ -n "${FINAL_MESSAGE}" ]; then
 #    echo "${FINAL_MESSAGE}"
 #fi
