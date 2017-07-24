@@ -44,7 +44,7 @@ cp -rf $BBR_ARTIFACT_DIRECTORY/* ${BITBUCKET_BACKUP_ARCHIVE_ROOT}/
 #    prepare_restore_archive "${1}"
 #fi
 info "prepare restore home"
-lock_bitbucket
+/var/vcap/jobs/bitbucket/bin/ctl stop
 prepare_restore_home "${1}"
 info "prepare restore db"
 prepare_restore_db "${1}"
@@ -62,7 +62,7 @@ info "Restore Elasticsearch data"
 restore_elasticsearch
 
 success "Successfully completed the restore of your ${PRODUCT} instance"
-unlock_bitbucket
+/var/vcap/jobs/bitbucket/bin/ctl start
 #if [ -n "${FINAL_MESSAGE}" ]; then
 #    echo "${FINAL_MESSAGE}"
 #fi
