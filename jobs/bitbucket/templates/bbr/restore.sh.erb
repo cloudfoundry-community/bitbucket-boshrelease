@@ -91,6 +91,10 @@ restore_db
 info "Restore Elasticsearch data"
 restore_elasticsearch
 
+cp -rf /var/vcap/jobs/bitbucket/config/bitbucket.properties $BITBUCKET_HOME/shared/bitbucket.properties
+cp -rf /var/vcap/jobs/bitbucket/config/set-jre-home.sh $BITBUCKET_INSTALLDIR/bin/set-jre-home.sh
+cp -rf /var/vcap/jobs/bitbucket/config/set-bitbucket-home.sh $BITBUCKET_INSTALLDIR/bin/set-bitbucket-home.sh
+
 success "Successfully completed the restore of your ${PRODUCT} instance"
 #if [ -n "${FINAL_MESSAGE}" ]; then
 #    echo "${FINAL_MESSAGE}"
