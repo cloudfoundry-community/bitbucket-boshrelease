@@ -35,9 +35,9 @@ function prepare_restore_db {
     check_var "BITBUCKET_RESTORE_DB"
 
     if run psql -U "${POSTGRES_USERNAME}" -h "${POSTGRES_HOST}" --port=${POSTGRES_PORT} -d "${BITBUCKET_DB}" -c "" 2>/dev/null; then
-       INFO "Can be restored over '${BITBUCKET_DB}'."
+       info "Can be restored over ${BITBUCKET_DB}."
     else
-       bail "Cannot restore database '${BITBUCKET_DB}', doesn't exist"
+       bail "Cannot restore database ${BITBUCKET_DB}, doesn't exist"
     fi
 }
 
