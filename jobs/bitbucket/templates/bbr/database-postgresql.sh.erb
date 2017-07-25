@@ -42,6 +42,7 @@ function prepare_restore_db {
 }
 
 function restore_db {
+    run psql -U "${POSTGRES_USERNAME}" -h "${POSTGRES_HOST}" --port=${POSTGRES_PORT} -d "${BITBUCKET_DB}" -t -c "select 'drop table \"'
     run pg_restore -U vcap -h "${POSTGRES_HOST}" --port=${POSTGRES_PORT} ${PG_PARALLEL} -d postgres -Fd "${BITBUCKET_RESTORE_DB}"
 }
 
