@@ -27,17 +27,27 @@ function backup_db {
     run pg_dump -U "${POSTGRES_USERNAME}" -h "${POSTGRES_HOST}" --port=${POSTGRES_PORT} ${PG_PARALLEL} -Fd \
         "${BITBUCKET_DB}" ${PG_SNAPSHOT_OPT} -f "${BITBUCKET_BACKUP_DB}"
 }
+function drop_table_before_restore {
+  PGDB=${BITBUCKET_DB}
+  VIEWS=`psql -d $PGDB -t --command "SELECT string_agg(table_name, ',') FROM information_schema.tables WHERE table_schema='public' AND table_type='VIEW'"`
+  BASETBLS=`psql -d $PGDB -t --command "SELECT string_agg(table_name, ',') FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE'"`
+  echo Dropping views:${VIEWS}
+  psql $PGDB --command "DROP VIEW IF EXISTS ${VIEWS} CASCADE"
+  echo Dropping tables:${BASETBLS}
+  psql $PGDB --command "DROP TABLE IF EXISTS ${BASETBLS} CASCADE"
+
+}
 
 function prepare_restore_db {
     check_config_var "POSTGRES_USERNAME"
     check_config_var "POSTGRES_HOST"
     check_config_var "POSTGRES_PORT"
     check_var "BITBUCKET_RESTORE_DB"
-    info "dropdb ${BITBUCKET_DB} -U vcap -h ${POSTGRES_HOST} --port=${POSTGRES_PORT}"
-    if run dropdb ${BITBUCKET_DB} -U vcap -h ${POSTGRES_HOST} --port=${POSTGRES_PORT} 2>/dev/null; then
-        info "Cannot restore over existing database '${BITBUCKET_DB}' so we'll drop existing db"
-    fi
-    
+    #info "dropdb ${BITBUCKET_DB} -U vcap -h ${POSTGRES_HOST} --port=${POSTGRES_PORT}"
+    #if run dropdb ${BITBUCKET_DB} -U vcap -h ${POSTGRES_HOST} --port=${POSTGRES_PORT} 2>/dev/null; then
+    #    info "Cannot restore over existing database '${BITBUCKET_DB}' so we'll drop existing db"
+    #fi
+    drop_table_before_restore
 
     if run psql -U "${POSTGRES_USERNAME}" -h "${POSTGRES_HOST}" --port=${POSTGRES_PORT} -d "${BITBUCKET_DB}" -c "" 2>/dev/null; then
         local table_count=$(psql -U "${POSTGRES_USERNAME}" -h "${POSTGRES_HOST}" --port=${POSTGRES_PORT} -d "${BITBUCKET_DB}" -tqc '\dt' | grep -v "^$" | wc -l)
