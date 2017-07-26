@@ -77,8 +77,8 @@ STANDBY_DATABASE_TYPE=postgresql
 if [ "${BACKUP_ZERO_DOWNTIME}" != "true" ]; then
     # The username and password to a user with the necessary permissions required to lock Bitbucket in maintenance
     # mode.
-    BITBUCKET_BACKUP_USER=username
-    BITBUCKET_BACKUP_PASS=password
+    BITBUCKET_BACKUP_USER=<%= p("bitbucket.setup_sysadmin_username") %>
+    BITBUCKET_BACKUP_PASS=<%= p("bitbucket.setup_sysadmin_password") %>
 fi
 
 # Sub-options for each home directory backup strategy
@@ -167,8 +167,8 @@ case ${BACKUP_DATABASE_TYPE} in
         # the standby system with the same level of access.
         BITBUCKET_DB=bitbucket
         POSTGRES_HOST=localhost
-        POSTGRES_USERNAME=bitadmin
-        export PGPASSWORD=password
+        POSTGRES_USERNAME=<%= p("bitbucket.jdbc_user") %>
+        export PGPASSWORD=<%= p("bitbucket.jdbc_password") %>
         POSTGRES_PORT=5524
 
         # ==== DISASTER RECOVERY VARS ====
