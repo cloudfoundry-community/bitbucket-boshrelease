@@ -169,7 +169,7 @@ case ${BACKUP_DATABASE_TYPE} in
         POSTGRES_HOST=localhost
         POSTGRES_USERNAME=<%= p("bitbucket.jdbc_user") %>
         export PGPASSWORD=<%= p("bitbucket.jdbc_password") %>
-        POSTGRES_PORT=5524
+        POSTGRES_PORT=<%= p("bitbucket.port") %>
 
         # ==== DISASTER RECOVERY VARS ====
 
