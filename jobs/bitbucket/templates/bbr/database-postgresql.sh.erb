@@ -30,7 +30,9 @@ function backup_db {
 function drop_table_before_restore {
   PGDB=${BITBUCKET_DB}
   VIEWS=`psql  -U "${POSTGRES_USERNAME}" -h "${POSTGRES_HOST}" --port=${POSTGRES_PORT} -d $PGDB -t --command "SELECT string_agg(table_name, ',') FROM information_schema.tables WHERE table_schema='public' AND table_type='VIEW'"`
+  info $VIEWS
   BASETBLS=`psql  -U "${POSTGRES_USERNAME}" -h "${POSTGRES_HOST}" --port=${POSTGRES_PORT} -d $PGDB -t --command "SELECT string_agg(table_name, ',') FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE'"`
+  info $BASETBLS
   echo Dropping views:${VIEWS}
   psql  -U "${POSTGRES_USERNAME}" -h "${POSTGRES_HOST}" --port=${POSTGRES_PORT} -d $PGDB --command "DROP VIEW IF EXISTS ${VIEWS} CASCADE"
   echo Dropping tables:${BASETBLS}
