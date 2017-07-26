@@ -44,6 +44,9 @@ properties:
     description: "server.proxy-name"
    jdbc_url:
     description: "jdbc:postgresql://localhost:5524/bitbucket"
+   postgres_port:
+    default: 5524
+    description: "5524"
    jdbc_user: 
     description: "postgres user"
    jdbc_password: 
