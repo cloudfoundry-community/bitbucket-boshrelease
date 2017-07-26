@@ -63,9 +63,9 @@ function prepare_restore_db {
 }
 
 function restore_db {
-    drop_table_before_restore
+    #drop_table_before_restore
     run pg_restore -U "${POSTGRES_USERNAME}" -h "${POSTGRES_HOST}" --port=${POSTGRES_PORT} ${PG_PARALLEL} \
--d postgres -C --clean -Fd "${BITBUCKET_RESTORE_DB}"
+-d "${BITBUCKET_DB}" --clean -Fd "${BITBUCKET_RESTORE_DB}"
 }
 
 function cleanup_db_backups {
