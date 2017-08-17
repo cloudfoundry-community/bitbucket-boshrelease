@@ -4,4 +4,4 @@ dependencies:
 - git
 - java
 files:
-- bitbucket/atlassian-bitbucket-5.0.2.tar.gz
+- bitbucket/atlassian-bitbucket-5.3.0.tar.gz

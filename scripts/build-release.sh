@@ -72,12 +72,12 @@ else
   mv jdk-8u131-linux-x64.tar.gz completed/
 fi
 
-if [ -e './completed/atlassian-bitbucket-5.0.2.tar.gz' ]; then
+if [ -e './completed/atlassian-bitbucket-5.3.0.tar.gz' ]; then
   echo 'httpd package already exists, skipping'
 else
-  echo 'Downloading file atlassian-bitbucket-5.0.2.tar.gz'
-   wget https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-5.0.2.tar.gz
-  mv atlassian-bitbucket-5.0.2.tar.gz completed/
+  echo 'Downloading file atlassian-bitbucket-5.3.0.tar.gz'
+   wget https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-5.3.0.tar.gz
+  mv atlassian-bitbucket-5.3.0.tar.gz completed/
 fi
 
 if [ -e './completed/git-2.13.1.tar.gz' ]; then
@@ -113,11 +113,11 @@ if [ "$BOSHVERSION" = "1" ]; then
 else
  bosh add-blob ./tmp/completed/jdk-8u131-linux-x64.tar.gz java/jdk-8u131-linux-x64.tar.gz
 fi
-echo 'Adding blob bitbucket/atlassian-bitbucket-5.0.2.tar.gz'
+echo 'Adding blob bitbucket/atlassian-bitbucket-5.3.0.tar.gz'
 if [ "$BOSHVERSION" = "1" ]; then
- bosh add blob ./tmp/completed/atlassian-bitbucket-5.0.2.tar.gz bitbucket
+ bosh add blob ./tmp/completed/atlassian-bitbucket-5.3.0.tar.gz bitbucket
 else
- bosh add-blob ./tmp/completed/atlassian-bitbucket-5.0.2.tar.gz bitbucket/atlassian-bitbucket-5.0.2.tar.gz
+ bosh add-blob ./tmp/completed/atlassian-bitbucket-5.3.0.tar.gz bitbucket/atlassian-bitbucket-5.3.0.tar.gz
 fi
 
 echo 'Adding blob jq/jq-1.5.tar.gz'
