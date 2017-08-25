@@ -1,7 +1,5 @@
---- 
+name: bitbucket-boshrelease
 blobstore:
-  provider: local
+  provider: s3
   options:
-    blobstore_path: /home/camille/Documents/bosh-lite/bitbucket02/blobs
-final_name: bitbucket
-
+    bucket_name: bitbucket-boshrelease

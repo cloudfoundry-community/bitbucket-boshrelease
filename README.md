@@ -6,17 +6,7 @@ This release is designed to use postgres and haproxy
 * http://bosh.io/d/github.com/cloudfoundry-community/haproxy-boshrelease?v=8.3.0
 
 ## Release usage
-* This release is in dev, so to use it follow this step
-```shell
-git clone https://github.com/camillemahaut/bitbucket-boshrelease.git
-cd bitbucket-boshrelease
-./scripts/build-release.sh $version (ex:1.0)
-```
-depends on your bosh cli version
-```shell
-bosh -e $env upload-release
-```
-* then deploy with your manifest
+* deploy with your manifest
 
 ## bitbucket property example
 ```yaml manifest

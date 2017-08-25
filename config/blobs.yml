@@ -1,1 +1,16 @@
---- {} 
+bitbucket/atlassian-bitbucket-5.3.0.tar.gz:
+  size: 220606035
+  object_id: c051867b-2a33-4307-6ab8-f1141d0ba63f
+  sha: a640686a4d557c93bfd571f81c2da0e5a330df29
+git/git-2.13.1.tar.gz:
+  size: 6910847
+  object_id: 7912ea1f-3682-4f88-4134-4cb0c3c37584
+  sha: 6855e8d2798c7b1e6cef02b66c5119932714bb4a
+java/jdk-8u131-linux-x64.tar.gz:
+  size: 185540433
+  object_id: 26e9a276-d1a0-45ce-7202-d466956972d0
+  sha: c2a5582c049beb5c7af6b87a469bc53b759b7b87
+jq/jq-1.5.tar.gz:
+  size: 739309
+  object_id: 1a8b21c5-f4dc-4c23-6147-53a295329cba
+  sha: 6eef3705ac0a322e8aa0521c57ce339671838277
