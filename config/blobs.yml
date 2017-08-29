@@ -1,7 +1,7 @@
 bitbucket/atlassian-bitbucket-5.3.0.tar.gz:
-  size: 220606035
-  object_id: c051867b-2a33-4307-6ab8-f1141d0ba63f
-  sha: a640686a4d557c93bfd571f81c2da0e5a330df29
+  size: 234065639
+  object_id: 43a763b2-f30c-4ef8-4680-852ef43b2a51
+  sha: c677e44c02af58cd252ebdc57eb743a5e22ac7d5
 git/git-2.13.1.tar.gz:
   size: 6910847
   object_id: 7912ea1f-3682-4f88-4134-4cb0c3c37584
