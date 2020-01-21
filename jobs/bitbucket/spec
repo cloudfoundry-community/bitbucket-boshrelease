@@ -56,7 +56,7 @@ properties:
    setup_displayName:
     description: "displayName"
    setup_baseUrl: 
-    description: "https://git.cfzcea.dev.desjardins.com"
+    description: "https://git.example.com"
    setup_sysadmin_username:
     description: "bitbucket admin username"
    setup_sysadmin_password: 
